@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>weather</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  
+  
+</head>
+
+<body>
+
+
+    
+  <nav class="row" style="background: rgb(24, 189, 139); color: white;">
+    <div align="center"><h1 class="col-md-3 text-center">Weather Detector</h1></div>
+  </nav>
+  <br />
+  <br />
+  <center class="row">
+    <div class="middle">
+        <form action="" class="search-box"  method="post">
+            {% csrf_token %}
+          <input type="text"  name="city" class="input">
+          <button type="button" class="btn" name="button"></button>
+        </form>
+      </div>
+    
+
+
+      
+  </center>
+  <div class="row">
+    
+    <div class="col-md-6 col-md-offset-3">
+      <h1>{{city}}</h1>
+      <h3>country code : {{data.country_code}}</h1>
+        <h5>coordinate : {{data.coordinate}}</h5>
+        <h5>temp : {{data.temp}}</h5>
+        <h5>pressure : {{data.pressure}} </h5>
+        <h5>humidity : {{data.humidity}}</h5>
+    </div>
+  </div>
+</body>
+
+</html>
+
+
+<script>
+    $(".btn").on("click",function(){
+  $(".input").toggleClass("inclicked");
+  $(".btn").toggleClass("close");
+})
+</script>
